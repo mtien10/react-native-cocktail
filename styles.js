@@ -43,7 +43,7 @@ export default StyleSheet.create({
         marginLeft: 5
     },
     iconCart: {
-        paddingTop: 10,
+        paddingTop: 7,
         paddingRight: 0
     },
     product: {
@@ -129,7 +129,137 @@ export default StyleSheet.create({
     best: {
         paddingHorizontal: 20
     },
-    manHai:{
+    manHai: {
         backgroundColor: 'navy'
-    }
+    },
+    containerProduct: {
+        backgroundColor: 'rgb(243,246,250)',
+        // backgroundColor: 'cornsilk',
+        flex: 1,
+    },
+    navbarProduct: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        position: 'absolute',
+        width: '100%',
+        backgroundColor: 'rgba(255,255,255,0.1)',
+        zIndex: 1
+    },
+    barEvalute: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 30,
+        marginHorizontal: 15,
+    },
+    materials: {
+        paddingTop: 30,
+        marginHorizontal: 15
+    },
+    desciptionsScProduct: {
+        paddingTop: 60,
+        marginHorizontal: 15
+    },
+    addToCart: {
+        width: 190,
+        height: 70,
+        backgroundColor: 'deepskyblue',
+        borderTopLeftRadius: 50,
+        justifyContent: "center",
+        alignItems: 'center',
+        alignSelf: 'flex-end'
+    },
+    buttonAddCart: {
+        flexDirection: 'row',
+        position: 'absolute',
+    },
+    containerCart: {
+        backgroundColor: 'rgb(243,246,250)',
+        flex: 1
+    },
+    itemCart: {
+        flexDirection: 'row',
+        marginTop: 200,
+        // borderRadius: 20,
+        // paddingVertical: 15,
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.34,
+        shadowRadius: 6.27,
+        // elevation: 10,
+    },
+    imageItemCart: {
+        width: 95,
+        height: 95,
+        borderRadius: 20,
+        marginLeft: 20
+    },
+    infoItemCart: {
+        marginLeft: 25,
+        justifyContent: 'space-around',
+        flex: 1,
+    },
+    amount: {
+        height: 300,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 30,
+        width: 60,
+        height: 20,
+        borderWidth: 0.2,
+        marginRight: 25,
+        marginTop: 60
+    },
+    total: {
+        // height: 300,
+        marginTop: 180,
+        borderRadius: 30,
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.44,
+        shadowRadius: 7.27,
+        elevation: 10,
+        flex: 1,
+    },
+    selectedItems: {
+        marginTop: 30,
+        marginHorizontal: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    shipping: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginHorizontal: 20,
+        justifyContent: 'space-between'
+    },
+    subTotal: {
+        marginTop: 70,
+        marginHorizontal: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    submitCheckout: {
+        marginTop: 30,
+        width: 300,
+        height: 60,
+        backgroundColor: 'darkblue',
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        justifyContent: "center",
+        alignItems: 'center',
+        alignSelf: 'center',
+    },
 });

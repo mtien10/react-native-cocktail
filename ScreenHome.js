@@ -1,20 +1,28 @@
 import styles from "./styles"
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, View, TextInput, Text, Dimensions, Image, FlatList, TouchableOpacity } from "react-native";
-import { SimpleLineIcons, FontAwesome5, EvilIcons, Feather, AntDesign, Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
+import { SimpleLineIcons, FontAwesome5, EvilIcons, Ionicons, Feather, AntDesign, Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
 import drinks from './data.json'
 import { formatPrice } from "./formatPrice"
 
-const ScreenHome = ({navigation}) => {
-    const itemName = "Item Name";
-    const description = "Desciption";
-    const priceProduct = "$250.00";
+const ScreenHome = ({ navigation }) => {
+    const randomNumber =  Math.floor(Math.random() * 19) + 1
+    const bestSelling = drinks.drinks[randomNumber];
+
+    const choiceProduct = (item) => {
+        navigation?.navigate('Product', {
+            infoProduct: item,
+        })
+
+    };
 
     const renderItem = ({ item, index }) => {
         const lastPrice = item.price + index
+        const newItem = { ...item, price: lastPrice }
+
 
         return (
-            <TouchableOpacity style={styles.product}>
+            <TouchableOpacity style={styles.product} onPress={() => choiceProduct(newItem)}>
                 <View style={styles.zoneProduct}>
                     <Image
                         style={styles.imageProduct}
@@ -90,8 +98,9 @@ const ScreenHome = ({navigation}) => {
                         placeholder="Search"
                     />
                 </View>
+
                 <TouchableOpacity>
-                    <EvilIcons style={styles.iconCart} name="cart" size={30} color="black" />
+                    <Ionicons style={styles.iconCart} name="cart-outline" size={30} color="black" />
                 </TouchableOpacity>
             </View>
 
@@ -124,17 +133,17 @@ const ScreenHome = ({navigation}) => {
                 <View style={styles.bestProduct}>
                     <Image
                         style={styles.imageBest}
-                        source={require("./assets/chair.webp")}
+                        source={{uri: bestSelling.strDrinkThumb}}
                     />
                     <View style={styles.infoBest}>
-                        <Text style={{ fontWeight: "bold" }}>{itemName}</Text>
-                        <Text style={{ fontStyle: 'italic' }}>{description}</Text>
+                        <Text style={{ fontWeight: "bold" }}>{bestSelling.strDrink}</Text>
+                        <Text style={{ fontStyle: 'italic' }} numberOfLines={2}>{bestSelling.strInstructions}</Text>
                         <Text>
-                            {priceProduct}
+                            {formatPrice(bestSelling.price)}
                         </Text>
                     </View>
-                    <TouchableOpacity style={{ justifyContent: "flex-end", marginRight: 15, borderRadius: 15 }} 
-                        onPress={() => navigation?.navigate('Product')}
+                    <TouchableOpacity style={{ justifyContent: "flex-end", marginRight: 15, borderRadius: 15 }}
+                        onPress={() => choiceProduct(bestSelling)}
                     >
                         <MaterialCommunityIcons name="arrow-right-box" size={35} color="black" />
                     </TouchableOpacity>
