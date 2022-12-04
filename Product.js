@@ -1,4 +1,4 @@
-import styles from "./styles"
+import styles from "./stylesProduct"
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SafeAreaView, View, TextInput, Text, Dimensions, Image, FlatList, TouchableOpacity, SafeAreaViewBase } from "react-native";
 import { Ionicons, Foundation, Feather, Entypo } from '@expo/vector-icons';
@@ -9,7 +9,7 @@ import { formatPrice } from "./formatPrice"
 const Product = ({ route, navigation }) => {
     const insets = useSafeAreaInsets();
     const { width, height } = Dimensions.get("screen");
-    const { infoProduct } = route.params
+    const { infoProduct, randomNumber } = route.params
     const strIngredient = Array.from(Array(15).keys())
 
 
@@ -24,7 +24,7 @@ const Product = ({ route, navigation }) => {
                     <Text style={{ fontWeight: "500", fontSize: 17 }}>Product</Text>
 
                     <TouchableOpacity style={styles.button}>
-                        <Ionicons style={styles.iconCart} name="cart-outline" size={30} color="black" />
+                        <Ionicons style={styles.iconCart} name="cart-outline" size={30} color="black" onPress={() => navigation?.navigate('Cart')} />
                     </TouchableOpacity>
                 </View>
                 <Image
@@ -53,7 +53,7 @@ const Product = ({ route, navigation }) => {
             <View style={{ flex: 1 }}>
                 <View style={styles.barEvalute}>
                     <View>
-                        <Text style={{ fontWeight: 'bold', color: 'tomato', fontSize: 25 }}>{formatPrice(infoProduct.price)}</Text>
+                        <Text style={{ fontWeight: 'bold', color: 'tomato', fontSize: 25 }}>{formatPrice(infoProduct.price + randomNumber)}</Text>
                         <Text style={{ fontWeight: 'bold', marginTop: 5, fontSize: 16 }}>{infoProduct.strDrink}</Text>
                     </View>
                     <TouchableOpacity style={{
@@ -70,18 +70,12 @@ const Product = ({ route, navigation }) => {
 
                 <View style={styles.materials}>
                     <Text style={{ fontWeight: 'bold' }}>Materials</Text>
-                    {
-                        strIngredient.map((item, index) => {
-                            if (infoProduct[`strIngredient${item + 1}`]) {
-                                return (<Text key={index}>{infoProduct[`strIngredient${item + 1}`]}</Text>)
-                            }
-                        })
-                    }
+                    <Text>Ngon</Text>
                 </View>
 
                 <View style={styles.desciptionsScProduct}>
                     <Text style={{ fontWeight: 'bold' }}>Desciptions</Text>
-                    <Text>Ngon</Text>
+                    <Text style={{ fontStyle: 'italic', marginTop: 10}}>{infoProduct.strInstructions}</Text>
                 </View>
             </View>
 

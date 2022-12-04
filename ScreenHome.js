@@ -1,4 +1,4 @@
-import styles from "./styles"
+import styles from "./stylesHome"
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, View, TextInput, Text, Dimensions, Image, FlatList, TouchableOpacity } from "react-native";
 import { SimpleLineIcons, FontAwesome5, EvilIcons, Ionicons, Feather, AntDesign, Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -12,6 +12,7 @@ const ScreenHome = ({ navigation }) => {
     const choiceProduct = (item) => {
         navigation?.navigate('Product', {
             infoProduct: item,
+            randomNumber
         })
 
     };
@@ -86,21 +87,19 @@ const ScreenHome = ({ navigation }) => {
 
                     </View>
                 </TouchableOpacity>
-            </View>
-
-            <View style={styles.navbar}>
-                <View style={styles.search}>
-                    <TouchableOpacity>
-                        <Feather style={styles.searchIcon} name="search" size={24} color="black" />
-                    </TouchableOpacity>
-                    <TextInput
-                        style={styles.searchInput}
-                        placeholder="Search"
-                    />
-                </View>
-
+            </View>     
+                <View style={styles.navbar}>
+                    <View style={styles.search}>
+                        <TouchableOpacity>
+                            <Feather style={styles.searchIcon} name="search" size={24} color="black" />
+                        </TouchableOpacity>
+                        <TextInput
+                            style={styles.searchInput}
+                            placeholder="Search"
+                        />
+                    </View>            
                 <TouchableOpacity>
-                    <Ionicons style={styles.iconCart} name="cart-outline" size={30} color="black" />
+                    <Ionicons style={styles.iconCart} name="cart-outline" size={30} color="black" onPress= {() => navigation?.navigate('Cart')} />
                 </TouchableOpacity>
             </View>
 
@@ -139,7 +138,7 @@ const ScreenHome = ({ navigation }) => {
                         <Text style={{ fontWeight: "bold" }}>{bestSelling.strDrink}</Text>
                         <Text style={{ fontStyle: 'italic' }} numberOfLines={2}>{bestSelling.strInstructions}</Text>
                         <Text>
-                            {formatPrice(bestSelling.price)}
+                            {formatPrice(bestSelling.price + randomNumber)}
                         </Text>
                     </View>
                     <TouchableOpacity style={{ justifyContent: "flex-end", marginRight: 15, borderRadius: 15 }}
